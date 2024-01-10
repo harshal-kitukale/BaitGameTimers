@@ -15,7 +15,7 @@ const DragonTigerTimerFunction = async () => {
         value--;
         if (value < 0) {
           pauseTimer(Interval);
-          value = 30;
+          // value = 30;
           clearInterval(Interval);
         }
 

@@ -15,10 +15,10 @@ const AndarBaharTimerFunction = async () => {
         value--;
         if (value < 0) {
           pauseTimer(Interval);
-          value = 30;
+          // value = 30;
           clearInterval(Interval);
         }
-        
+
         let existingDocument = await AndarBaharGameTimer.findById("ABGame");
         console.log("t", existingDocument);
 
