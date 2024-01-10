@@ -16,7 +16,7 @@ const AndarBaharTimerFunction = async () => {
       Interval = setInterval(async () => {
 
         let existingDocument = await AndarBaharGameTimer.findById("ABGame");
-        // console.log("hj",existingDocument);
+        console.log("t",existingDocument);
         
         // Update the existing document or create a new one
         if (!existingDocument) {
