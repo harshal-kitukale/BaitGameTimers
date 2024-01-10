@@ -1,26 +1,23 @@
 const { AndarBaharGameTimer } = require("../models/Timer.model");
 
+const pauseTimer = (Interval) => {
+  clearInterval(Interval);
+  setTimeout(timer, 5000);
+};
+
 const AndarBaharTimerFunction = async () => {
-  // MainCardGenerator()
   let Interval;
-  const pauseTimer = () => {
-    clearInterval(Interval);
-    setTimeout(() => {
-      timer();
-    }, 5000);
-  };
 
-  try {
+  const timer = async () => {
     let value = 30;
-    function timer() {
-      Interval = setInterval(async () => {
 
+    Interval = setInterval(async () => {
+      try {
         let existingDocument = await AndarBaharGameTimer.findById("ABGame");
-        console.log("t",existingDocument);
-        
+        console.log("t", existingDocument);
+
         // Update the existing document or create a new one
         if (!existingDocument) {
-          // If the document with ID 'val1' doesn't exist, create a new one
           const newDocument = new AndarBaharGameTimer({
             value,
             _id: "ABGame",
@@ -28,24 +25,22 @@ const AndarBaharTimerFunction = async () => {
           await newDocument.save();
         } else {
           existingDocument.value = value;
-          // existingDocument.state = "Waiting";
           await existingDocument.save();
         }
-        value = value - 1;
+
+        value--;
 
         if (value < 0) {
-          pauseTimer();
+          pauseTimer(Interval);
           value = 30;
           clearInterval(Interval);
         }
-        
+      } catch (error) {
+        console.error(error);
+      }
+    }, 1000);
+  };
 
-      }, 1000);
-    }
-   
-  } catch (error) {
-    console.log(error);
-  }
   timer();
 };
 
