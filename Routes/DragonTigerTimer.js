@@ -17,7 +17,7 @@ const DragonTigerTimerFunction = async () => {
       Interval = setInterval(async () => {
 
         let existingDocument = await DragonTigerGameTimer.findById("DTGame");
-        // console.log("hj",existingDocument);
+        console.log("DT",existingDocument);
         
         // Update the existing document or create a new one
         if (!existingDocument) {
