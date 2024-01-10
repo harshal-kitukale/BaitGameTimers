@@ -1,24 +1,16 @@
 const { AndarBaharGameTimer } = require("../models/Timer.model");
 
 const AndarBaharTimerFunction = async () => {
-  let Interval;
+  // let Interval;
   const pauseTimer = (Interval) => {
     clearInterval(Interval);
     setTimeout(timer, 5000);
   };
-  const timer = async () => {
+  const timer = () => {
     let value = 30;
 
-    Interval = setInterval(async () => {
+    let Interval = setInterval(async () => {
       try {
-
-        value--;
-        if (value < 0) {
-          pauseTimer(Interval);
-          // value = 30;
-          clearInterval(Interval);
-        }
-
         let existingDocument = await AndarBaharGameTimer.findById("ABGame");
         console.log("t", existingDocument);
 
@@ -34,7 +26,13 @@ const AndarBaharTimerFunction = async () => {
           await existingDocument.save();
         }
 
-        
+        value--;
+
+        if (value < 0) {
+          pauseTimer(Interval);
+          clearInterval(Interval);
+          return;
+        }
       } catch (error) {
         console.error(error);
       }

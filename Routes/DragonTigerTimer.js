@@ -12,12 +12,7 @@ const DragonTigerTimerFunction = async () => {
 
     Interval = setInterval(async () => {
       try {
-        value--;
-        if (value < 0) {
-          pauseTimer(Interval);
-          // value = 30;
-          clearInterval(Interval);
-        }
+       
 
         let existingDocument = await DragonTigerGameTimer.findById("DTGame");
         console.log("DT", existingDocument);
@@ -33,7 +28,13 @@ const DragonTigerTimerFunction = async () => {
           existingDocument.value = value;
           await existingDocument.save();
         }
-       
+        value--;
+        
+        if (value < 0) {
+          pauseTimer(Interval);
+          clearInterval(Interval);
+        }
+
       } catch (error) {
         console.error(error);
       }

@@ -20,7 +20,7 @@ setTimeout(() => {
 }, 500);
 
 setTimeout(() => {
-  DragonTigerTimerFunction();
+  // DragonTigerTimerFunction();
 }, 1000);
 app.listen(PORT, async () => {
   try {
