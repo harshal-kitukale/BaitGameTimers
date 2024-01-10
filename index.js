@@ -15,13 +15,9 @@ app.get("/", (req, res) => {
 });
 
 // timer and main card function
-setTimeout(() => {
   AndarBaharTimerFunction();
-}, 500);
 
-setTimeout(() => {
-  // DragonTigerTimerFunction();
-}, 1000);
+  DragonTigerTimerFunction();
 app.listen(PORT, async () => {
   try {
     await connection;
