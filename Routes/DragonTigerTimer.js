@@ -1,18 +1,24 @@
 const { DragonTigerGameTimer } = require("../models/Timer.model");
 
-const pauseTimer = (Interval) => {
-  clearInterval(Interval);
-  setTimeout(timer, 5000);
-};
-
 const DragonTigerTimerFunction = async () => {
   let Interval;
+  const pauseTimer = (Interval) => {
+    clearInterval(Interval);
+    setTimeout(timer, 5000);
+  };
 
   const timer = async () => {
     let value = 30;
 
     Interval = setInterval(async () => {
       try {
+        value--;
+        if (value < 0) {
+          pauseTimer(Interval);
+          value = 30;
+          clearInterval(Interval);
+        }
+
         let existingDocument = await DragonTigerGameTimer.findById("DTGame");
         console.log("DT", existingDocument);
 
@@ -27,14 +33,7 @@ const DragonTigerTimerFunction = async () => {
           existingDocument.value = value;
           await existingDocument.save();
         }
-
-        value--;
-
-        if (value < 0) {
-          pauseTimer(Interval);
-          value = 30;
-          // clearInterval(Interval);
-        }
+       
       } catch (error) {
         console.error(error);
       }
