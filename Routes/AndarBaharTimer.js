@@ -44,7 +44,7 @@ const AndarBaharTimerFunction = async () => {
     }
    
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
   timer();
 };
