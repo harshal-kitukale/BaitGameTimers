@@ -7,7 +7,7 @@ const DragonTigerTimerFunction = async () => {
     setTimeout(timer, 5000);
   };
 
-  const timer = async () => {
+  const timer = () => {
     let value = 30;
 
     Interval = setInterval(async () => {
@@ -43,5 +43,4 @@ const DragonTigerTimerFunction = async () => {
 
   timer();
 };
-
 module.exports = { DragonTigerTimerFunction };

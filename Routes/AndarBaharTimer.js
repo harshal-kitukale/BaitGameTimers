@@ -41,5 +41,4 @@ const AndarBaharTimerFunction = async () => {
 
   timer();
 };
-
 module.exports = { AndarBaharTimerFunction };
