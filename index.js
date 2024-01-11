@@ -19,9 +19,9 @@ setTimeout(() => {
   AndarBaharTimerFunction();
 }, 2000);
 
-setTimeout(() => {
-  DragonTigerTimerFunction();
-}, 3000);
+// setTimeout(() => {
+//   DragonTigerTimerFunction();
+// }, 3000);
 
 app.listen(PORT, async () => {
   try {
