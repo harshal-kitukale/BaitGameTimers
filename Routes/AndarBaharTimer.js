@@ -45,6 +45,8 @@ const AndarBaharTimerFunction = async () => {
    
   } catch (error) {
     console.log(error);
+    clearInterval(Interval)
+    pauseTimer()
   }
   timer();
 };
